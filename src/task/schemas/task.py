@@ -8,8 +8,10 @@ class TaskSchema(BaseModel):
     description: str | None = Field(default=None, max_length=255)
 
 
-class TaskUpdateSchema(TaskSchema):
-    is_completed: bool = Field(default=False)
+class TaskUpdateSchema(BaseModel):
+    title: str = Field(min_length=1, max_length=255)
+    description: str | None = Field(max_length=255)
+    is_completed: bool
 
 
 class DBTaskSchema(TaskSchema):
